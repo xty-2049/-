@@ -1,10 +1,6 @@
-# 智能旅行规划系统
+# 云途智旅
 
 本项目是一个基于 Vue 3、FastAPI、HelloAgents 和高德地图能力的个性化旅行规划系统。系统支持根据城市、日期、交通方式、住宿偏好和兴趣标签生成旅行计划，并展示地图路线、预算明细、天气信息和导出结果。
-
-## 本次增强
-
-本项目新增了三个适合简历展示的核心能力：
 
 1. SQLite 缓存机制
    - 文件：`backend/app/services/cache_service.py`
@@ -21,11 +17,6 @@
    - 使用最近邻算法生成初始访问顺序，再用 2-opt 进行局部优化。
    - 目的：优化每日景点访问顺序，减少景点间通勤距离。
 
-整体后处理入口：
-
-```text
-backend/app/services/itinerary_optimizer.py
-```
 
 系统在 LLM 生成初始行程后，会自动执行：
 
@@ -41,21 +32,8 @@ backend/app/services/itinerary_optimizer.py
 - 后端：FastAPI、Pydantic、HelloAgents、SQLite
 - 算法：K-Means 风格区域聚类、最近邻路径排序、2-opt 局部优化
 
-## 简历描述参考
+## 图片效果预览：
+<img width="2550" height="1379" alt="0ff7a28a135815c507eb08dd3b4976ca" src="https://github.com/user-attachments/assets/7ecd30e4-72b4-4e4d-a30d-c48148f0ea0f" />
+<img width="1876" height="1238" alt="bd8e353c5054fdcdcee8f4f363d9ca07" src="https://github.com/user-attachments/assets/bc3ad8d9-c6b7-46dd-ac99-0a2d6e5791f8" />
 
-基于 Vue3、FastAPI、LLM Agent 和高德地图服务开发个性化旅行规划系统，实现景点检索、天气查询、酒店推荐、预算估算、地图可视化和 PDF 导出。设计区域聚类与路径优化模块，先根据经纬度将景点按旅行天数划分为多个游览区域，再采用最近邻与 2-opt 策略优化每日访问顺序；同时引入 SQLite 缓存机制复用 POI、天气、路线和优化结果，减少重复外部 API 调用并提升响应效率。
 
-## 验证
-
-后端语法检查：
-
-```bash
-python -m py_compile backend/app/services/cache_service.py backend/app/services/geo_utils.py backend/app/services/route_optimizer.py backend/app/services/cluster_service.py backend/app/services/itinerary_optimizer.py
-```
-
-前端构建：
-
-```bash
-cd frontend
-npm run build
-```
